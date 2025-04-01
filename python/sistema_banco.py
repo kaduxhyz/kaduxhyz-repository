@@ -1,58 +1,70 @@
 #print("**********Menu**********")
-#print("Criar Usuario")
+#print("Criar Usuário")
 #print("Depositar")
-#print("Sacar")]
+#print("Sacar")
 
-#criei uma lista vazia, pois serão adicionados valores posteriormente
+#Importação de biblioteca
+from datetime import datetime
+
 saldo = 0
-numere_saques = 0
-limites = 500
+limite = 500
+numero_saques = 0
 limites_saques = 3
-usuario = []
+usuarios =[]#criei uma lista vazia , pois serão adicionados valores posteriormente
 contas = []
-agencia = '001'
+agencia='0001'
 
-
+#Menu com as opções que o usuário vai escolher
 def menu():
     print('''
         **********Menu**********
-        (1) Criar Usuario
+        (1) Criar Usuário
         (2) Criar Conta
         (3) Listar Contas
         (d) Depositar
         (s) Sacar
-        (e) Estrato
+        (e) Extrato
         (q) Sair
     ''')
-    return input("Qual opção deseja?")
-menu()
+    return input('Qual opção deseja')
 
 def deposito(valor,saldo):
-    # valor receber o valor do deposito e somar o saldo
-    if valor >0 :
+    #  vou receber o valor do depósito e somar ao saldo
+    if valor > 0 :
         saldo += valor
         #print mostrando o valor depositado
-        print(f'Voce depositou R${valor}')
-
+        print(f'Você depositou R${valor}')      
     else:
-        print('Valor do deposito Invalido. Verifique a quantia digitada.')
-
+        print('Valor do deposito Ínválido.Verifique a quantia digitada.')
+    
     return saldo
 
 def saque(saque,saldo):
-    global numere_saques,limites,limites_saques
-    #de acordo com a documentação Python, variaveis globais não ficam ao limite do escopo da função.
-    if numere_saques >= limites_saques
-    print('Você atingiu o limite de saques da sua conta, Tente novamente ou no proximo dia útil')
 
-    else:
+
+   global  numero_saques,limites,limites_saques
+    #De acordo com a documentação Python , váriaveis globais não ficam presas ao limite do escopo da função.
+   if numero_saques >= limites_saques:
+    print('Você atingiu o limite de saques de sua conta.Tente novamente no proximo dia útil')
+   else:
         if saque <= 0:
-            print('Saque inválido. Veirfique o valor e tente novamente.')
-        elif saque > limites : 
-            print('valor limite excedido. Verifique o valor e tente novamente.')
-        elif saque saldo :
-            print('Saldo insuficiente. Verifique o valor e tente novamente.')
-        else :
+            print('Saque Inválido.Verifique o valor e tente novamente.')
+        elif saque > limite :
+            print('Valor limite excedido.Verifique o valor e tente novamente.')
+        elif saque > saldo :
+            print('Saldo insuficiênte.Verifique o valor e tente novamente.')
+        else:
             saldo -= saque
-            numere_saques += 1
-        return saldo
+            numero_saques += 1
+            
+        return saldo   
+
+def extrato (saldo):  
+    hora = datetime.now() #Obtem a hora atual 
+    horaatual = hora.strftime('%d/%m/%Y/ %H:%M')
+    print('=============Extrato=============')
+    print(f'{horaatual} \nSaldo disponível:{saldo}' )
+    print('\n=============Extrato=============')
+
+def sair():
+    print('*********Encerrando o Sistema*********')
