@@ -19,8 +19,7 @@ def menu():
     print('''
         **********Menu**********
         (1) Criar Usuário
-        (2) Criar Conta
-        (3) Listar Contas
+        (2) Listar Contas
         (d) Depositar
         (s) Sacar
         (e) Extrato
@@ -98,10 +97,13 @@ while True:
     op = menu()
 
     if op =='d':
-        valor = float(input('Digite o vaor do Depósito: '))
+        valor = float(input('Digite o valor do Depósito: '))
         saldo = deposito(valor,saldo)
     if op =='s':
         valor = float(input('Digite o valor de Saque : '))
         saldo = saque(valor,saldo)
-
+    if op =='1':
+        novo_usuario = int(input('Digite seu cpf: '))
+    if op =='2':
+        usuario = str(input('Digite seu usuario: '))
     break
