@@ -85,9 +85,23 @@ def novo_usuario(usuario):
     print('Cadastro realizado com sucesso!')
 #Função filtrar usuários
 def filtrar_usuario (cpf,usuarios):
-    #Filtra o usuário com base em um CPF
-    #A Função usa uma coompreensão de lista para verificar aquele que corresponde
-    #ao cpf fornecido
-    #e retorna o primeiro usuário que corresponde com o cpf filtrado.Caso não encontre nada ele retorna NONE(nada).
+    # Filtra um usuário em uma lista de usuários com base no CPF fornecido.
+    #O CPF do usuário que se deseja buscar.
+    #usuarios (list): Uma lista de dicionários, onde cada dicionário representa um usuário e contém uma chave 'cpf' com o CPF do usuário.
+    #None: Retorna o dicionário do usuário correspondente ao CPF, 
+    #None se nenhum usuário for encontrado.
+    
     usuarios_filtrados = [usuario for usuario in usuarios if usuarios['cpf'] ==cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
+
+while True:
+    op = menu()
+
+    if op =='d':
+        valor = float(input('Digite o vaor do Depósito: '))
+        saldo = deposito(valor,saldo)
+    if op =='s':
+        valor = float(input('Digite o valor de Saque : '))
+        saldo = saque(valor,saldo)
+
+    break
